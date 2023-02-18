@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>5-Input HTML Form with Client-Side Validation</title>
+	<style>
+		.error {
+			color: red;
+		}
+	</style>
+	<script>
+		function validateForm() {
+			let name = document.forms["myForm"]["name"].value;
+			let email = document.forms["myForm"]["email"].value;
+			let phone = document.forms["myForm"]["phone"].value;
+			let age = document.forms["myForm"]["age"].value;
+			let password = document.forms["myForm"]["password"].value;
+
+			let nameError = document.getElementById("nameError");
+			let emailError = document.getElementById("emailError");
+			let phoneError = document.getElementById("phoneError");
+			let ageError = document.getElementById("ageError");
+			let passwordError = document.getElementById("passwordError");
+
+			let valid = true;
+
+			if (name == "") {
+				nameError.innerHTML = "Name is required.";
+				valid = false;
+			} else {
+				nameError.innerHTML = "";
+			}
+
+			if (email == "") {
+				emailError.innerHTML = "Email is required.";
+				valid = false;
+			} else if (!/\S+@\S+\.\S+/.test(email)) {
+				emailError.innerHTML = "Email is invalid.";
+				valid = false;
+			} else {
+				emailError.innerHTML = "";
+			}
+
+			if (phone == "") {
+				phoneError.innerHTML = "Phone number is required.";
+				valid = false;
+			} else if (!/^\d{10}$/.test(phone)) {
+				phoneError.innerHTML = "Phone number is invalid.";
+				valid = false;
+			} else {
+				phoneError.innerHTML = "";
+			}
+
+			if (age == "") {
+				ageError.innerHTML = "Age is required.";
+				valid = false;
+			} else if (isNaN(age)) {
+				ageError.innerHTML = "Age must be a number.";
+				valid = false;
+			} else if (age < 18) {
+				ageError.innerHTML = "You must be at least 18 years old.";
+				valid = false;
+			} else {
+				ageError.innerHTML = "";
+			}
+
+			if (password == "") {
+				passwordError.innerHTML = "Password is required.";
+				valid = false;
+			} else if (password.length < 8) {
+				passwordError.innerHTML = "Password must be at least 8 characters long.";
+				valid = false;
+			} else {
+				passwordError.innerHTML = "";
+			}
+
+			return valid;
+		}
+	</script>
+</head>
+<body>
+	<h1>5-Input HTML Form with Client-Side Validation</h1>
+	<form name="myForm" onsubmit="return validateForm()">
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name">
+		<span id="nameError" class="error"></span><br><br>
+
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email">
+		<span id="emailError" class="error"></span><br><br>
+
+		<label for="phone">Phone Number:</label>
+		<input type="tel" id="phone" name="phone">
+		<span id="phoneError" class="error"></span><br><br>
+
+		</form>
+            
+        </body></form></html>
