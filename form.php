@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
   <head>
     <link rel="stylesheet" href="style.css">
-    <title>Registration Form</title>
+    <title>Registration Form - Assignment</title>
   </head>
   <body>
     
